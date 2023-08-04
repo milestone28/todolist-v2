@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const mongoDB = "mongodb://127.0.0.1:27017/todoListDB";
+const mongoDB = "mongodb+srv://gary-admin:kidrock1432@cluster0.kbfnazv.mongodb.net/todoListDB";
 const _ = require("lodash");
 const app = express();
 
@@ -58,7 +58,7 @@ app.get("/", function (req, res) {
         })
         .catch((err) => {
           console.log(`Error Default adding the items : ${err}`);
-        });
+        });8
       itemsList = defaultItems;
       res.redirect("/");
     } else {
@@ -161,6 +161,6 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
-app.listen(3000, function () {
-  console.log("Server Is Running port 3000");
-});
+app.listen(process.env.PORT || 3000, function(){ //this will listed local or online like heroku
+  console.log("Server is Up!");
+})
